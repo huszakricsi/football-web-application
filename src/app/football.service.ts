@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Competition } from './interfaces';
+import { Competition, CompetitionRequestResult, CompetitionsRequestResult } from './interfaces';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FootballService {
 
+  private apiUrl = 'http://api.football-data.org/v2/';
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'X-Auth-Token': '8d9511c675274ff798a31232b9d30338' })
+  };
 
-  getCompetitions(): Observable<Competition[]> {
-    const competitions = of( [{"id":2006,"area":{"id":2001,"name":"Africa","countryCode":"AFR","ensignUrl":null},"name":"WC Qualification","code":null,"emblemUrl":null,"plan":"TIER_FOUR","currentSeason":{"id":555,"startDate":"2019-09-04","endDate":"2021-11-16","currentMatchday":null,"winner":null},"numberOfAvailableSeasons":2,"lastUpdated":"2018-06-04T23:54:04Z"}]);
-    return competitions;
+  constructor(
+    private http: HttpClient) { }
+
+  getCompetitions(): Observable<CompetitionsRequestResult> {
+    return this.http.get<CompetitionsRequestResult>(this.apiUrl+'competitions?plan=TIER_ONE', this.httpOptions)
   }
-
-  getCompetitionById(id: number): Observable<Competition> {
-    const competition = of( {"id":2006,"area":{"id":2001,"name":"Africa","countryCode":"AFR","ensignUrl":null},"name":"WC Qualification","code":null,"emblemUrl":null,"plan":"TIER_FOUR","currentSeason":{"id":555,"startDate":"2019-09-04","endDate":"2021-11-16","currentMatchday":null,"winner":null},"numberOfAvailableSeasons":2,"lastUpdated":"2018-06-04T23:54:04Z"});
-    return competition;
-  }
-  
-
 }

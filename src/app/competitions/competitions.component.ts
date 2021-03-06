@@ -14,11 +14,11 @@ export class CompetitionsComponent implements OnInit {
   constructor(private footballService: FootballService) { }  
 
   ngOnInit(): void {
-    this.getCompetitions();
+    this.setCompetitions();
   }
   
-  getCompetitions(): void {
+  setCompetitions(): void {
     this.footballService.getCompetitions()
-        .subscribe(competitions => this.competitions = competitions);
+        .subscribe(competitionsRequestResult => this.competitions = competitionsRequestResult.competitions);
   }
 }
