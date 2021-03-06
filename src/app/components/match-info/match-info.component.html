@@ -1,0 +1,15 @@
+<div *ngIf="match">
+    <app-team-info *ngIf="match.awayTeam" [team]="match.awayTeam"></app-team-info>
+    <p *ngIf="match.group">{{match.group}}</p>
+    <app-team-info *ngIf="match.awayTeam" [team]="match.homeTeam"></app-team-info>
+    <!-- <p *ngIf="match.id">{{match.id}}</p> -->
+    <p *ngIf="match">{{match.lastUpdated}}</p>
+    <p *ngIf="match">{{match.matchday}}</p> 
+    <app-odds-info *ngIf="match.odds" [odds]="match.odds"></app-odds-info>
+    <app-referees *ngIf="match.referees" [referees]="match.referees"></app-referees>
+    <app-score-info *ngIf="match.score" [score]="match.score"></app-score-info>
+    <app-season-info *ngIf="match.season" [season]="match.season"></app-season-info>
+    <p *ngIf="match.stage">{{match.stage}}</p> 
+    <p *ngIf="match.status">{{match.status}}</p> 
+    <p *ngIf="match.utcDate">{{match.utcDate}}</p> 
+</div>

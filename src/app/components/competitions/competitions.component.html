@@ -1,0 +1,5 @@
+<h1>Available football competitions</h1>
+<li *ngFor="let competition of competitions"
+    routerLink="/competition/{{competition.id}}">
+    <app-competition-info [competition]="competition"></app-competition-info>
+  </li>

@@ -1,0 +1,11 @@
+<div *ngIf="competition">
+    <app-area *ngIf="competition.area" [area]="competition.area"></app-area>
+    <p *ngIf="competition.code">{{competition.code}}</p>
+    <app-season-info *ngIf="competition.currentSeason" [season]="competition.currentSeason"></app-season-info>
+    <p *ngIf="competition.emblemUrl">{{competition.emblemUrl}}</p>
+    <!-- <p *ngIf="competition.id">{{competition.id}}</p> -->
+    <p *ngIf="competition.lastUpdated">{{competition.lastUpdated}}</p>
+    <p *ngIf="competition.name">{{competition.name}}</p>
+    <p *ngIf="competition.numberOfAvailableSeasons">{{competition.numberOfAvailableSeasons}}</p>
+    <p *ngIf="competition.plan">{{competition.plan}}</p>
+</div>
