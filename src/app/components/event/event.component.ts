@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 import Head2Head from '../../interfaces/head-2-head';
 import Match from '../../interfaces/match';
 import { FootballService } from '../../services/football-service/football.service';
@@ -10,10 +12,11 @@ import { ToolbarService } from '../../services/toolbar-service/toolbar.service';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
-export class EventComponent implements OnInit {
+export class EventComponent implements OnInit, OnDestroy {
 
   match: Match = null;
   head2head: Head2Head = null;
+  pollingData: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,9 +24,27 @@ export class EventComponent implements OnInit {
     private toolbarService: ToolbarService) {} 
 
   ngOnInit(): void {
-    this.setData();
+    window.scroll(0,0);
+    this.pollValues();
   }
   
+  ngOnDestroy(): void {
+    this.pollingData.unsubscribe();
+  }
+
+  pollValues(): any {
+      let count=0;
+      this.pollingData=interval(20000)
+      .pipe(
+        startWith(0),
+        switchMap(async () => this.setData())
+      )
+      .subscribe(
+          res  => {},
+          error=>{}
+      );
+  }
+
   setData(): void {
     this.setTitle('Event');
     this.setLoading(true);
@@ -34,7 +55,6 @@ export class EventComponent implements OnInit {
       this.head2head = matchRequestResult.head2head;
       this.setTitle(`Event:  ${this.match.homeTeam.name} - ${this.match.awayTeam.name}`);
       this.setLoading(false);
-      window.scroll(0,0);
     });
   }
 

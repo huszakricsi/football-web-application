@@ -1,4 +1,4 @@
-<mat-grid-list class="competition-info-margin" *ngIf="competition" cols="3" rowHeight="50px">
+<mat-grid-list class="competition-info-margin" *ngIf="competition" cols="6" rowHeight="50px">
     <mat-grid-tile [colspan]="1" [rowspan]="4" [style.background]="'#DDBDF1'">
         <div class="tile-child">
             <div>Name:</div>
@@ -11,7 +11,7 @@
     <mat-grid-tile [colspan]="1" [rowspan]="4" [style.background]="'#DDBDF1'">
         <app-area-info class="tile-child" *ngIf="competition.area" [area]="competition.area"></app-area-info>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="6" [style.background]="'#DDBDF1'">
+    <mat-grid-tile [colspan]="1" [rowspan]="3" [style.background]="'#DDBDF1'">
         <div class="tile-child">
             <div>Code:</div>
             <div class="extra-left-bottom-margin" *ngIf="competition.code">{{competition.code}}</div>
@@ -21,7 +21,7 @@
             <div class="extra-left-bottom-margin" *ngIf="competition.numberOfAvailableSeasons">{{competition.numberOfAvailableSeasons}}</div>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="6" [style.background]="'#DDBDF1'">
+    <mat-grid-tile [colspan]="2" [rowspan]="3" [style.background]="'#DDBDF1'">
         <app-season-info class="tile-child" *ngIf="competition.currentSeason" [season]="competition.currentSeason"></app-season-info>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'#DDBDF1'">

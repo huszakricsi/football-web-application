@@ -9,7 +9,7 @@ import { ToolbarService } from 'src/app/services/toolbar-service/toolbar.service
 })
 export class SettingsDialogComponent {
 
-  availablePaginationPageNumber: number[] = [1, 2, 5, 10, 25, 100];
+  availablePaginationPageNumber: number[] = [1, 2, 3, 4, 5, 10, 25, 100];
   selectedPaginationPageNumber: number;
 
   constructor(

@@ -7,7 +7,7 @@ export class ToolbarService {
 
   title = "Football web application";
   loading = false;
-  paginationPageNumber: number = 1;
+  paginationPageNumber: number = 3;
 
   constructor() { }
 

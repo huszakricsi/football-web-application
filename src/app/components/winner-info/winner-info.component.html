@@ -1,8 +1,6 @@
 Winner:
 <div class="extra-left-bottom-margin" *ngIf="winner">
-    <p *ngIf="winner.name">Name: {{winner.name}}</p> 
-    <p *ngIf="winner.shortName">Short name:{{winner.shortName}}</p> 
-    <p *ngIf="winner.tla">Tla: {{winner.tla}}</p>     
+    <div *ngIf="winner.name">Name: {{winner.name}}</div> 
     <img class="crest-url-image" *ngIf="winner.crestUrl" [src]="winner.crestUrl">
 </div>
  

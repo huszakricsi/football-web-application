@@ -28,7 +28,6 @@ export class FootballService {
     return this.http.get<CompetitionsRequestResult>(`${this.apiUrl}competitions?plan=TIER_ONE`, this.httpOptions).pipe(
         catchError((error) => {
           this.toolbarService.setLoading(false);
-          alert("Http error occured, check developer console for further information!")
           console.log(`An error occurred during HTTP get(${this.apiUrl}competitions?plan=TIER_ONE)`);
           return throwError(error);
         })
@@ -39,7 +38,6 @@ export class FootballService {
     return this.http.get<MatchesRequestResult>(`${this.apiUrl}competitions/${id}/matches`, this.httpOptions).pipe(
       catchError((error) => {
         this.toolbarService.setLoading(false);
-        alert("Http error occured, check developer console for further information!")
         console.log(`An error occurred during HTTP get(${this.apiUrl}competitions/${id}/matches)`);
         return throwError(error);
       })
@@ -50,7 +48,6 @@ export class FootballService {
     return this.http.get<MatchRequestResult>(`${this.apiUrl}matches/${id}`, this.httpOptions).pipe(
       catchError((error) => {
         this.toolbarService.setLoading(false);
-        alert("Http error occured, check developer console for further information!")
         console.log(`An error occurred during HTTP get(${this.apiUrl}matches/${id})`);
         return throwError(error);
       })

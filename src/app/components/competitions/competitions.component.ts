@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 import Competition from 'src/app/interfaces/competition';
 import { ToolbarService } from 'src/app/services/toolbar-service/toolbar.service';
 import { FootballService } from '../../services/football-service/football.service';
@@ -8,11 +10,12 @@ import { FootballService } from '../../services/football-service/football.servic
   templateUrl: './competitions.component.html',
   styleUrls: ['./competitions.component.css']
 })
-export class CompetitionsComponent implements OnInit {
+export class CompetitionsComponent implements OnInit, OnDestroy {
 
   title = "Competitions"
   competitions: Competition[] = [];
   competitionPage: any;
+  pollingData: any;
 
   constructor(
     private footballService: FootballService,
@@ -21,7 +24,25 @@ export class CompetitionsComponent implements OnInit {
     }  
 
   ngOnInit(): void {
-    this.setCompetitions();
+    window.scroll(0,0);
+    this.pollValues();
+  }
+  
+  ngOnDestroy(): void {
+    this.pollingData.unsubscribe();
+  }
+
+  pollValues(): any {
+      let count=0;
+      this.pollingData=interval(20000)
+      .pipe(
+        startWith(0),
+        switchMap(async () => this.setCompetitions())
+      )
+      .subscribe(
+          res  => {},
+          error=>{}
+      );
   }
   
   setCompetitions(): void {
@@ -30,7 +51,6 @@ export class CompetitionsComponent implements OnInit {
       .subscribe(competitionsRequestResult => {
         this.competitions = competitionsRequestResult.competitions;
         this.setLoading(false);
-        window.scroll(0,0);
       });
   }
 

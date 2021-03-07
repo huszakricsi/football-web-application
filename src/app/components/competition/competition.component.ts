@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { interval } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 import Competition from 'src/app/interfaces/competition';
 import Match from 'src/app/interfaces/match';
 import { ToolbarService } from 'src/app/services/toolbar-service/toolbar.service';
@@ -20,54 +22,75 @@ export class CompetitionComponent implements OnInit {
   scheduledMatchesPage: any;
   inPlayMatchesPage: any;
   finishedMatchesPage: any;
+  pollingData: any;
 
   constructor(
     private route: ActivatedRoute,
     private footballService: FootballService,
     private toolbarService: ToolbarService) {} 
   
-    ngOnInit(): void {
-      this.setData();
-    }
+  ngOnInit(): void {
+    window.scroll(0,0);
+    this.pollValues();
+  }
     
-    setData(): void {
-      this.setTitle('Competition');
-      this.setLoading(true);
-      const competitionId = parseInt(this.route.snapshot.paramMap.get('competitionId'));
-      this.footballService.getMatchesByCompetitionId(competitionId)
-      .subscribe(matchesRequestResult => {
-        this.competition = matchesRequestResult.competition;
-        this.matches = matchesRequestResult.matches;
-        this.aggroupMatches();
-        this.setTitle(`Competition: ${this.competition.name}`);
-        this.setLoading(false);
-        window.scroll(0,0);
-      });
-    }
+  ngOnDestroy(): void {
+    this.pollingData.unsubscribe();
+  }
 
-    setLoading(newLoading: boolean): void{
-      this.toolbarService.setLoading(newLoading);
-    }
+  pollValues(): any {
+      let count=0;
+      this.pollingData=interval(20000)
+      .pipe(
+        startWith(0),
+        switchMap(async () => this.setData())
+      )
+      .subscribe(
+          res  => {},
+          error=>{}
+      );
+  }
 
-    aggroupMatches(): void{
-      let self = this;
+  setData(): void {
+    this.setTitle('Competition');
+    this.setLoading(true);
+    const competitionId = parseInt(this.route.snapshot.paramMap.get('competitionId'));
+    this.footballService.getMatchesByCompetitionId(competitionId)
+    .subscribe(matchesRequestResult => {
+      this.competition = matchesRequestResult.competition;
+      this.matches = matchesRequestResult.matches;
+      this.aggroupMatches();
+      this.setTitle(`Competition: ${this.competition.name}`);
+      this.setLoading(false);
+    });
+  }
 
-      this.matches.forEach(function (match) {
-        if(match.status === "SCHEDULED"){
-          self.scheduledMatches.push(match);
-        } else if(match.status === "IN_PLAY"){
-          self.inPlayMatches.push(match);
-        }else{
-          self.finishedMatches.push(match);
-        }
-      }); 
-    }
+  setLoading(newLoading: boolean): void{
+    this.toolbarService.setLoading(newLoading);
+  }
 
-    setTitle(newTitle: string): void {
-      this.toolbarService.setTitle(newTitle);
-    }
+  aggroupMatches(): void{
+    let self = this;
+    this.scheduledMatches = [];
+    this.inPlayMatches = [];
+    this.finishedMatches = [];
 
-    getPaginationPageNumber(): number{
-      return this.toolbarService.getPaginationPageNumber();
-    }
+    this.matches.forEach(function (match) {
+      if(match.status === "SCHEDULED"){
+        self.scheduledMatches.push(match);
+      } else if(match.status === "IN_PLAY"){
+        self.inPlayMatches.push(match);
+      }else{
+        self.finishedMatches.push(match);
+      }
+    }); 
+  }
+
+  setTitle(newTitle: string): void {
+    this.toolbarService.setTitle(newTitle);
+  }
+
+  getPaginationPageNumber(): number{
+    return this.toolbarService.getPaginationPageNumber();
+  }
 }
