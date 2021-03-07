@@ -11,7 +11,7 @@ import MatchRequestResult from 'src/app/interfaces/match-request-result';
 })
 export class FootballService {
 
-  private apiUrl = 'http://api.football-data.org/v2/';
+  private apiUrl = 'https://api.football-data.org/v2/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'X-Auth-Token': this.authenticationService.getXAuthToken() })
