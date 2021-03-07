@@ -24,7 +24,8 @@
     <mat-grid-tile [colspan]="2" [rowspan]="6" [style.background]="'#DDBDF1'">
         <app-season-info class="tile-child" *ngIf="competition.currentSeason" [season]="competition.currentSeason"></app-season-info>
     </mat-grid-tile>
-    <mat-grid-tile *ngIf="withButton" [colspan]="3" [rowspan]="1" [style.background]="'#DDBDF1'">
+    <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'#DDBDF1'">
         <button mat-raised-button color="primary" routerLink="/competition/{{competition.id}}">View competition</button>
     </mat-grid-tile>
 </mat-grid-list>
+<div>Name:</div>

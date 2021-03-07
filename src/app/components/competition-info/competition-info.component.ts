@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Competition from 'src/app/interfaces/competition';
 
 @Component({
@@ -9,11 +10,10 @@ import Competition from 'src/app/interfaces/competition';
 export class CompetitionInfoComponent implements OnInit {
 
   @Input() competition: Competition;
-  @Input() withButton: boolean;
   
-  constructor() { }
+  constructor(
+    private router: Router) { }
 
   ngOnInit(): void {
   }
-
 }

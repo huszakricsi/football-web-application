@@ -25,6 +25,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MatGridListModule} from '@angular/material/grid-list';
 import { WinnerInfoComponent } from './components/winner-info/winner-info.component';
+import { EventComponent } from './components/event/event.component';
+import { HeadToHeadInfoComponent } from './components/head-to-head-info/head-to-head-info.component';
+import { TeamHeadToHeadInfoComponent } from './components/team-head-to-head-info/team-head-to-head-info.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { WinnerInfoComponent } from './components/winner-info/winner-info.compon
     RefereesComponent,
     ToolbarComponent,
     WinnerInfoComponent,
+    EventComponent,
+    HeadToHeadInfoComponent,
+    TeamHeadToHeadInfoComponent,
   ],
   imports: [
     BrowserModule,

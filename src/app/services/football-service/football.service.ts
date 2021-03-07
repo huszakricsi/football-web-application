@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import CompetitionsRequestResult from '../../interfaces/competitions-request-result';
 import MatchesRequestResult from '../../interfaces/matches-request-result';
 import { AuthenticationService } from '../authentication-service/authentication.service';
+import MatchRequestResult from 'src/app/interfaces/match-request-result';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +29,7 @@ export class FootballService {
     return this.http.get<MatchesRequestResult>(`${this.apiUrl}competitions/${id}/matches`, this.httpOptions)
   }
 
+  getMatchById(id: number): Observable<MatchRequestResult> {
+    return this.http.get<MatchRequestResult>(`${this.apiUrl}matches/${id}`, this.httpOptions)
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import Competition from 'src/app/interfaces/competition';
 import Match from 'src/app/interfaces/match';
 
 @Component({
@@ -9,7 +10,7 @@ import Match from 'src/app/interfaces/match';
 export class MatchInfoComponent implements OnInit {
   
   @Input() match: Match;
-  @Input() withButton: boolean;
+  @Input() competition: Competition;
 
   constructor() { }
 

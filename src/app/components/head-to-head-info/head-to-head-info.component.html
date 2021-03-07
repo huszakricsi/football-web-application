@@ -1,0 +1,13 @@
+Head2Head:
+<div class="extra-left-bottom-margin" *ngIf="head2head">
+    <div class="tile-child">
+        <div>Home team:</div>
+        <app-team-head-to-head-info *ngIf="head2head.homeTeam" [teamHead2head]="head2head.homeTeam"></app-team-head-to-head-info>
+    </div>
+    <div class="tile-child">
+        <div>Away team:</div>
+        <app-team-head-to-head-info *ngIf="head2head.awayTeam" [teamHead2head]="head2head.awayTeam"></app-team-head-to-head-info>
+    </div>
+    <div *ngIf="head2head.numberOfMatches">Number of matches: {{head2head.numberOfMatches}}</div>
+    <div *ngIf="head2head.totalGoals">Total goals: {{head2head.totalGoals}}</div>
+</div>
