@@ -1,0 +1,10 @@
+Area:
+<div class="extra-left-bottom-margin" *ngIf="area">
+    <div *ngIf="area.name" >
+        Name: {{area.name}}
+        <img class="ensign-url-image" *ngIf="area.ensignUrl" [src]="area.ensignUrl">
+    </div>
+    
+    <div *ngIf="area.countryCode" >Country Code: {{area.countryCode}}</div>
+    <!-- <div *ngIf="area.id" >{{area.id}}</div> -->
+</div>

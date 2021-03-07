@@ -1,4 +1,4 @@
-<app-competition-info [competition]="competition"></app-competition-info>
-<li *ngFor="let match of matches">
-    <app-match-info [match]="match"></app-match-info>
-  </li>
+<app-competition-info [withButton]="false" [competition]="competition"></app-competition-info>
+<div *ngFor="let match of matches">
+    <app-match-info [withButton]="true" [match]="match"></app-match-info>
+</div>

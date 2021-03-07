@@ -1,8 +1,8 @@
-<div *ngIf="score">
-    <p *ngIf="score.duration">{{score.duration}}</p>
-    extraTime: <app-team-score-infos-info *ngIf="score.extraTime" [teamScoreInfos]="score.extraTime"></app-team-score-infos-info>
-    fullTime: <app-team-score-infos-info *ngIf="score.fullTime" [teamScoreInfos]="score.fullTime"></app-team-score-infos-info>
-    halfTime: <app-team-score-infos-info *ngIf="score.halfTime" [teamScoreInfos]="score.halfTime"></app-team-score-infos-info>
-    penalties: <app-team-penalty-infos-info *ngIf="score.penalties" [teamPenaltyInfos]="score.penalties"></app-team-penalty-infos-info>
-    <p *ngIf="score.winner">{{score.winner}}</p>
+<div class="extra-left-bottom-margin" *ngIf="score">
+    <div *ngIf="score.duration">Duration: {{score.duration}}</div>
+    Extra time: <app-team-score-infos-info *ngIf="score.extraTime"  [homeTeam]="homeTeam" [awayTeam]="awayTeam" [teamScoreInfos]="score.extraTime"></app-team-score-infos-info>
+    Full time: <app-team-score-infos-info *ngIf="score.fullTime"  [homeTeam]="homeTeam" [awayTeam]="awayTeam" [teamScoreInfos]="score.fullTime"></app-team-score-infos-info>
+    Half time: <app-team-score-infos-info *ngIf="score.halfTime"  [homeTeam]="homeTeam" [awayTeam]="awayTeam" [teamScoreInfos]="score.halfTime"></app-team-score-infos-info>
+    Penalties: <app-team-penalty-infos-info *ngIf="score.penalties"  [homeTeam]="homeTeam" [awayTeam]="awayTeam" [teamPenaltyInfos]="score.penalties"></app-team-penalty-infos-info>
+    <div *ngIf="score.winner">The winner is the {{score.winner=='HOME_TEAM' ? homeTeam.name : awayTeam.name}} ({{score.winner=='HOME_TEAM' ? 'home team' : 'away team'}})</div>
 </div>

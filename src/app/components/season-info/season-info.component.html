@@ -1,7 +1,9 @@
-<div *ngIf="season">    
-    <p *ngIf="season.currentMatchday">{{season.currentMatchday}}</p>
-    <p *ngIf="season.endDate">{{season.endDate}}</p>
-    <!-- <p *ngIf="season.id">{{season.id}}</p> -->
-    <p *ngIf="season.startDate">{{season.startDate}}</p>
-    <p *ngIf="season.winner">{{season.winner}}</p>
+Season:
+<div class="extra-left-bottom-margin" *ngIf="season">    
+    <div *ngIf="season.currentMatchday">Current matchday: {{season.currentMatchday}}</div>
+    <div *ngIf="season.endDate">End date: {{season.endDate}}</div>
+    <div *ngIf="season.startDate">Start date: {{season.startDate}}</div>
+    <div *ngIf="season.winner">
+        <app-winner-info [winner]="season.winner"></app-winner-info>
+    </div>
 </div>

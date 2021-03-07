@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app-component/app.component';
 import { CompetitionsComponent } from './components/competitions/competitions.component';
 import { CompetitionInfoComponent } from './components/competition-info/competition-info.component';
-import { AreaComponent } from './components/area/area.component';
+import { AreaInfoComponent } from './components/area-info/area-info.component';
 import { SeasonInfoComponent } from './components/season-info/season-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CompetitionComponent } from './components/competition/competition.component';
@@ -17,13 +17,21 @@ import { ScoreInfoComponent } from './components/score-info/score-info.component
 import { TeamScoreInfosInfoComponent } from './components/team-score-infos-info/team-score-infos-info.component';
 import { TeamPenaltyInfosInfoComponent } from './components/team-penalty-infos-info/team-penalty-infos-info.component';
 import { RefereesComponent } from './components/referees/referees.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { MatGridListModule} from '@angular/material/grid-list';
+import { WinnerInfoComponent } from './components/winner-info/winner-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CompetitionsComponent,
     CompetitionInfoComponent,
-    AreaComponent,
+    AreaInfoComponent,
     SeasonInfoComponent,
     CompetitionComponent,
     MatchInfoComponent,
@@ -33,12 +41,20 @@ import { RefereesComponent } from './components/referees/referees.component';
     ScoreInfoComponent,
     TeamScoreInfosInfoComponent,
     TeamPenaltyInfosInfoComponent,
-    RefereesComponent
+    RefereesComponent,
+    ToolbarComponent,
+    WinnerInfoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

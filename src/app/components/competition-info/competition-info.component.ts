@@ -9,6 +9,7 @@ import Competition from 'src/app/interfaces/competition';
 export class CompetitionInfoComponent implements OnInit {
 
   @Input() competition: Competition;
+  @Input() withButton: boolean;
   
   constructor() { }
 

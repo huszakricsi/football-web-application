@@ -1,11 +1,30 @@
-<div *ngIf="competition">
-    <app-area *ngIf="competition.area" [area]="competition.area"></app-area>
-    <p *ngIf="competition.code">{{competition.code}}</p>
-    <app-season-info *ngIf="competition.currentSeason" [season]="competition.currentSeason"></app-season-info>
-    <p *ngIf="competition.emblemUrl">{{competition.emblemUrl}}</p>
-    <!-- <p *ngIf="competition.id">{{competition.id}}</p> -->
-    <p *ngIf="competition.lastUpdated">{{competition.lastUpdated}}</p>
-    <p *ngIf="competition.name">{{competition.name}}</p>
-    <p *ngIf="competition.numberOfAvailableSeasons">{{competition.numberOfAvailableSeasons}}</p>
-    <p *ngIf="competition.plan">{{competition.plan}}</p>
-</div>
+<mat-grid-list class="competition-info-margin" *ngIf="competition" cols="3" rowHeight="50px">
+    <mat-grid-tile [colspan]="1" [rowspan]="4" [style.background]="'#DDBDF1'">
+        <div class="tile-child">
+            <div>Name:</div>
+            <div class="extra-left-bottom-margin" *ngIf="competition.name">{{competition.name}}</div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4" [style.background]="'#DDBDF1'">
+        <img *ngIf="competition.emblemUrl" [src]="competition.emblemUrl">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4" [style.background]="'#DDBDF1'">
+        <app-area-info class="tile-child" *ngIf="competition.area" [area]="competition.area"></app-area-info>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="6" [style.background]="'#DDBDF1'">
+        <div class="tile-child">
+            <div>Code:</div>
+            <div class="extra-left-bottom-margin" *ngIf="competition.code">{{competition.code}}</div>
+            <div>Last updated:</div>
+            <div class="extra-left-bottom-margin" *ngIf="competition.lastUpdated">{{competition.lastUpdated}}</div>
+            <div>Number of available seasons:</div>
+            <div class="extra-left-bottom-margin" *ngIf="competition.numberOfAvailableSeasons">{{competition.numberOfAvailableSeasons}}</div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="6" [style.background]="'#DDBDF1'">
+        <app-season-info class="tile-child" *ngIf="competition.currentSeason" [season]="competition.currentSeason"></app-season-info>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="withButton" [colspan]="3" [rowspan]="1" [style.background]="'#DDBDF1'">
+        <button mat-raised-button color="primary" routerLink="/competition/{{competition.id}}">View competition</button>
+    </mat-grid-tile>
+</mat-grid-list>

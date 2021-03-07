@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import Area from '../../interfaces/area';
 
 @Component({
-  selector: 'app-area',
-  templateUrl: './area.component.html',
-  styleUrls: ['./area.component.css']
+  selector: 'app-area-info',
+  templateUrl: './area-info.component.html',
+  styleUrls: ['./area-info.component.css']
 })
-export class AreaComponent implements OnInit {
+export class AreaInfoComponent implements OnInit {
 
   @Input() area: Area;
 

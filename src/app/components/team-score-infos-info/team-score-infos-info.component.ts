@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import Team from 'src/app/interfaces/team';
 import TeamScoreInfos from 'src/app/interfaces/team-score-infos';
 
 @Component({
@@ -9,6 +10,8 @@ import TeamScoreInfos from 'src/app/interfaces/team-score-infos';
 export class TeamScoreInfosInfoComponent implements OnInit {
   
   @Input() teamScoreInfos: TeamScoreInfos;
+  @Input() homeTeam: Team;
+  @Input() awayTeam: Team;
 
   constructor() { }
 

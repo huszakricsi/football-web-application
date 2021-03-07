@@ -1,15 +1,52 @@
-<div *ngIf="match">
-    <app-team-info *ngIf="match.awayTeam" [team]="match.awayTeam"></app-team-info>
-    <p *ngIf="match.group">{{match.group}}</p>
-    <app-team-info *ngIf="match.awayTeam" [team]="match.homeTeam"></app-team-info>
-    <!-- <p *ngIf="match.id">{{match.id}}</p> -->
-    <p *ngIf="match">{{match.lastUpdated}}</p>
-    <p *ngIf="match">{{match.matchday}}</p> 
-    <app-odds-info *ngIf="match.odds" [odds]="match.odds"></app-odds-info>
-    <app-referees *ngIf="match.referees" [referees]="match.referees"></app-referees>
-    <app-score-info *ngIf="match.score" [score]="match.score"></app-score-info>
-    <app-season-info *ngIf="match.season" [season]="match.season"></app-season-info>
-    <p *ngIf="match.stage">{{match.stage}}</p> 
-    <p *ngIf="match.status">{{match.status}}</p> 
-    <p *ngIf="match.utcDate">{{match.utcDate}}</p> 
-</div>
+<mat-grid-list class="match-info-margin" *ngIf="match" cols="4" rowHeight="50px">
+    <mat-grid-tile [colspan]="1" [rowspan]="7" [style.background]="'lightblue'">
+        <div class="tile-child">
+            <div>Group:</div>
+            <div class="extra-left-bottom-margin" *ngIf="match.group">{{match.group}}</div>
+            <div>Home team:</div>
+            <app-team-info *ngIf="match.homeTeam" [team]="match.homeTeam"></app-team-info>
+            <div>Away team:</div>
+            <app-team-info *ngIf="match.awayTeam" [team]="match.awayTeam"></app-team-info>
+            <div>Last updated:</div>
+            <div class="extra-left-bottom-margin" *ngIf="match">{{match.lastUpdated}}</div>
+            <div>Matchday:</div>
+            <div class="extra-left-bottom-margin" *ngIf="match">{{match.matchday}}</div> 
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="3" [style.background]="'lightblue'">
+        <div class="tile-child">
+            <div>Odds:</div>
+            <app-odds-info *ngIf="match.odds" [odds]="match.odds"></app-odds-info>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4" [style.background]="'lightblue'">
+        <div class="tile-child">
+            <div>Referees:</div>
+            <app-referees *ngIf="match.referees" [referees]="match.referees"></app-referees>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="7" [style.background]="'lightblue'">
+        <div class="tile-child">
+            <div>Score:</div>
+            <app-score-info *ngIf="match.score" [homeTeam]="match.homeTeam" [awayTeam]="match.awayTeam" [score]="match.score"></app-score-info>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="4" [style.background]="'lightblue'">
+        <div class="tile-child">
+            <div>Status:</div>
+            <div class="extra-left-bottom-margin" *ngIf="match.status">{{match.status}}</div> 
+            <div>Stage:</div>
+            <div class="extra-left-bottom-margin" *ngIf="match.stage">{{match.stage}}</div> 
+            <div>Date:</div>
+            <div class="extra-left-bottom-margin" *ngIf="match.utcDate">{{match.utcDate}}</div> 
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="3" [style.background]="'lightblue'">
+        <div class="tile-child">
+            <app-season-info *ngIf="match.season" [season]="match.season"></app-season-info>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="withButton" [colspan]="4" [rowspan]="1" [style.background]="'lightblue'">
+        <button mat-raised-button color="primary" routerLink="/">View event</button>
+    </mat-grid-tile>
+</mat-grid-list>

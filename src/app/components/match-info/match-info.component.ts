@@ -9,6 +9,7 @@ import Match from 'src/app/interfaces/match';
 export class MatchInfoComponent implements OnInit {
   
   @Input() match: Match;
+  @Input() withButton: boolean;
 
   constructor() { }
 

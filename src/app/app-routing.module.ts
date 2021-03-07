@@ -5,7 +5,7 @@ import { CompetitionComponent } from './components/competition/competition.compo
 
 const routes: Routes = [
   { path: '',                component: CompetitionsComponent },
-  { path: 'competition/:id', component: CompetitionComponent }
+  { path: 'competition/:competitionId', component: CompetitionComponent }
 ];
 
 @NgModule({

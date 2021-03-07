@@ -1,0 +1,10 @@
+<mat-toolbar class="fixed-on-top" color="primary">
+    <mat-progress-bar class="fixed-on-top" *ngIf="isLoading()" mode="indeterminate"></mat-progress-bar>
+    <mat-toolbar-row>
+        <span>{{getTitle()}}</span>
+        <span class="toolbar-spacer"></span>
+        <button mat-button routerLink="/">
+            <mat-icon aria-hidden="false">home</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>

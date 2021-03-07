@@ -21,11 +21,11 @@ export class FootballService {
     private authenticationService: AuthenticationService) { }
 
   getCompetitions(): Observable<CompetitionsRequestResult> {
-    return this.http.get<CompetitionsRequestResult>(this.apiUrl+'competitions?plan=TIER_ONE', this.httpOptions)
+    return this.http.get<CompetitionsRequestResult>(`${this.apiUrl}competitions?plan=TIER_ONE`, this.httpOptions)
   }
 
   getMatchesByCompetitionId(id: number): Observable<MatchesRequestResult> {
-    return this.http.get<MatchesRequestResult>(this.apiUrl+'competitions/'+id+'/matches', this.httpOptions)
+    return this.http.get<MatchesRequestResult>(`${this.apiUrl}competitions/${id}/matches`, this.httpOptions)
   }
 
 }
