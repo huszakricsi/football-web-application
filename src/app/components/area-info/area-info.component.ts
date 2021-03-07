@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Area from '../../interfaces/area';
 
 @Component({
@@ -6,13 +6,10 @@ import Area from '../../interfaces/area';
   templateUrl: './area-info.component.html',
   styleUrls: ['./area-info.component.css']
 })
-export class AreaInfoComponent implements OnInit {
+export class AreaInfoComponent {
 
   @Input() area: Area;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

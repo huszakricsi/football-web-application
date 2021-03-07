@@ -28,6 +28,12 @@ import { WinnerInfoComponent } from './components/winner-info/winner-info.compon
 import { EventComponent } from './components/event/event.component';
 import { HeadToHeadInfoComponent } from './components/head-to-head-info/head-to-head-info.component';
 import { TeamHeadToHeadInfoComponent } from './components/team-head-to-head-info/team-head-to-head-info.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SettingsDialogComponent } from './components/settings-dialog/settings-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -50,6 +56,7 @@ import { TeamHeadToHeadInfoComponent } from './components/team-head-to-head-info
     EventComponent,
     HeadToHeadInfoComponent,
     TeamHeadToHeadInfoComponent,
+    SettingsDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +68,11 @@ import { TeamHeadToHeadInfoComponent } from './components/team-head-to-head-info
     MatButtonModule,
     MatProgressBarModule,
     MatGridListModule,
+    MatTabsModule,
+    NgxPaginationModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

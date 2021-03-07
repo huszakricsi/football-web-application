@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Winner from 'src/app/interfaces/winner';
 
 @Component({
@@ -6,13 +6,10 @@ import Winner from 'src/app/interfaces/winner';
   templateUrl: './winner-info.component.html',
   styleUrls: ['./winner-info.component.css']
 })
-export class WinnerInfoComponent implements OnInit {
+export class WinnerInfoComponent {
 
   @Input() winner: Winner;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

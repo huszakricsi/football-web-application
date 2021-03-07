@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Team from 'src/app/interfaces/team';
 
 @Component({
@@ -6,13 +6,10 @@ import Team from 'src/app/interfaces/team';
   templateUrl: './team-info.component.html',
   styleUrls: ['./team-info.component.css']
 })
-export class TeamInfoComponent implements OnInit {
+export class TeamInfoComponent {
 
   @Input() team: Team;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

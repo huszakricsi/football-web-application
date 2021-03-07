@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Head2Head from 'src/app/interfaces/head-2-head';
 
 @Component({
@@ -6,13 +6,10 @@ import Head2Head from 'src/app/interfaces/head-2-head';
   templateUrl: './head-to-head-info.component.html',
   styleUrls: ['./head-to-head-info.component.css']
 })
-export class HeadToHeadInfoComponent implements OnInit {
+export class HeadToHeadInfoComponent {
 
   @Input() head2head: Head2Head;
   
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

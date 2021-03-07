@@ -1,3 +1,21 @@
-<div *ngFor="let match of matches">
-    <app-match-info [competition]="competition" [match]="match"></app-match-info>
-</div>
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Past events">
+        <div *ngFor="let match of finishedMatches | paginate: { itemsPerPage: getPaginationPageNumber(), currentPage: finishedMatchesPage, id: 'finishedMatchesPaginator', totalItems: finishedMatches.length }">
+            <app-match-info [competition]="competition" [match]="match"></app-match-info>
+        </div>
+        <pagination-controls (pageChange)="finishedMatchesPage = $event" id="finishedMatchesPaginator"></pagination-controls>
+    </mat-tab>
+    <mat-tab label="Ongoing">
+        <div *ngFor="let match of inPlayMatches | paginate: { itemsPerPage: getPaginationPageNumber(), currentPage: inPlayMatchesPage, id: 'inPlayMatchesPaginator', totalItems: inPlayMatches.length }">
+            <app-match-info [competition]="competition" [match]="match"></app-match-info>
+        </div>
+        <pagination-controls (pageChange)="inPlayMatchesPage = $event" id="inPlayMatchesPaginator"></pagination-controls>
+    </mat-tab>
+    <mat-tab label="Upcoming events">
+        <div *ngFor="let match of scheduledMatches | paginate: { itemsPerPage: getPaginationPageNumber(), currentPage: scheduledMatchesPage, id: 'scheduledMatchesPaginator', totalItems: scheduledMatches.length }">
+            <app-match-info [competition]="competition" [match]="match"></app-match-info>
+        </div>
+        <pagination-controls (pageChange)="scheduledMatchesPage = $event" id="scheduledMatchesPaginator"></pagination-controls>
+    </mat-tab>
+</mat-tab-group>
+  

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Odds from 'src/app/interfaces/odds';
 
 @Component({
@@ -6,13 +6,10 @@ import Odds from 'src/app/interfaces/odds';
   templateUrl: './odds-info.component.html',
   styleUrls: ['./odds-info.component.css']
 })
-export class OddsInfoComponent implements OnInit {
+export class OddsInfoComponent {
 
   @Input() odds: Odds;
   
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

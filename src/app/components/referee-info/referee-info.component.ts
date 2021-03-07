@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Referee from 'src/app/interfaces/referee';
 
 @Component({
@@ -6,13 +6,10 @@ import Referee from 'src/app/interfaces/referee';
   templateUrl: './referee-info.component.html',
   styleUrls: ['./referee-info.component.css']
 })
-export class RefereeInfoComponent implements OnInit {
+export class RefereeInfoComponent {
 
   @Input() referee: Referee;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

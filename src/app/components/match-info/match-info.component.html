@@ -34,7 +34,7 @@
     <mat-grid-tile [colspan]="1" [rowspan]="6" [style.background]="'lightblue'">
         <div class="tile-child">
             <div>Status:</div>
-            <div class="extra-left-bottom-margin" *ngIf="match.status">{{match.status}}</div> 
+            <div class="extra-left-bottom-margin" *ngIf="match.status">{{humanStatus()}}</div> 
             <div>Stage:</div>
             <div class="extra-left-bottom-margin" *ngIf="match.stage">{{match.stage}}</div> 
             <div>Date:</div>
